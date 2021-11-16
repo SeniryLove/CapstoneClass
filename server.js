@@ -13,14 +13,17 @@ const server = express()
 const ws = new SocketServer({ server })
 
 //當 WebSocket 從外部連結時執行
-ws.on('connection', ws => {
+wss.on('connection', ws => {
     console.log('Client connected')
 
-    //對 message 設定監聽，接收從 Client 發送的訊息
     ws.on('message', data => {
-        //data 為 Client 發送的訊息，現在將訊息原封不動發送出去
-		console.log(data.toString());
-        ws.send(data)
+        //取得所有連接中的 client
+        let clients = wss.clients
+		console.log(data.toString())
+        //做迴圈，發送訊息至每個 client
+        clients.forEach(client => {
+            client.send(data)
+        })
     })
 
     ws.on('close', () => {

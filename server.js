@@ -10,7 +10,7 @@ const server = express()
     .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 //將 express 交給 SocketServer 開啟 WebSocket 的服務
-const ws = new SocketServer({ server })
+const wss = new SocketServer({ server })
 
 //當 WebSocket 從外部連結時執行
 wss.on('connection', ws => {

@@ -1,0 +1,28 @@
+<!DOCUMENT>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="index.css">
+	</head>
+    <body>
+        <script src='./index.js'></script>
+		
+		<p>
+			
+		</p>
+			
+		<p>
+			<video autoplay id='PlayVideo'></video>
+		</p>
+		<div id='text_div'>
+			<form onsubmit='sendCommand("saveconfig",sendMessage());return false'>
+				<label id='text'></label>
+				<input id='sendButton' type='submit' value="Send"></input>
+				<label id='userNameLabel'>UserName:</label>
+				<input id='userName' class='inputField' type="text" required></input>
+				<label id='userMessageLabel'>Message:</label>
+				<input id='userMessage' class='inputField' type="text" required></input>	
+			</form>
+		</div>
+    </body>
+</html>

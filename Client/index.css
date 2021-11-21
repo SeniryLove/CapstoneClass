@@ -1,0 +1,66 @@
+
+body {
+	font-size: 25px;
+}
+
+#text {
+	position: absolute;
+	right: 0.5%;
+	left: 0.5%;
+	top: 2px;
+	bottom: 20%;
+	white-space: pre-line;
+	font-size: 0.75em;
+	border-style: solid;
+	border-width: 2px;
+}
+
+#text_div {
+	position: absolute;
+	right: 1.5%;
+	top: 1.5%;
+	bottom: 1.5%;
+	width: 13.5%;
+	text-align: center;
+	vertical-align: top;
+	border-style: double;
+	border-width: 5px;
+}
+
+#sendButton {
+	position: absolute;
+	left: 5%;
+	width: 90%;
+	height: 5%;
+	bottom: 14.5%;
+}
+
+#userNameLabel {
+	position: absolute;
+	left: 5%;
+	width: 90%;
+	bottom: 10%;
+}
+
+#userName {
+	position: absolute;
+	left: 5%;
+	width: 90%;
+	bottom: 7.5%;
+}
+
+#userMessageLabel {
+	position: absolute;
+	left: 5%;
+	width: 90%;
+	bottom: 4%;
+}
+
+#userMessage {
+	position: absolute;
+	left: 5%;
+	width: 90%;
+	bottom: 1.5%;
+}
+
+#userMessage

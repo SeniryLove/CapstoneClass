@@ -1,4 +1,5 @@
-<!DOCUMENT>
+<!--
+<!DOCUMENT html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -6,9 +7,10 @@
 	</head>
     <body>
         <script src='./index.js'></script>
-		
+		<script src='./webrtc.js'></script>
 		<p>
-			
+			<button onclick='changeConstraints("audio")'>Open microphone</button>
+			<button onclick='changeConstraints("video")'>Open camera</button>
 		</p>
 			
 		<p>
@@ -25,4 +27,77 @@
 			</form>
 		</div>
     </body>
+</html>
+ -->
+<!DOCTYPE html>
+<!--
+ *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+-->
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <title>Select audio and video sources</title>
+
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+        div.select {
+            display: inline-block;
+            margin: 0 0 1em 0;
+        }
+
+        p.small {
+            font-size: 0.7em;
+        }
+
+        label {
+            width: 12em;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="container">
+    <div class="select">
+        <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+    </div>
+
+    <div class="select">
+        <label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
+    </div>
+
+    <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div>
+	<video id="leftVideo_2" playsinline autoplay >
+		<source src="chrome.webm" type="video/webm">
+		<source src="chrome.mp4" type="video/mp4">
+	</video>
+    <video id="leftVideo" playsinline autoplay></video>
+	<video id="rightVideo" playsinline autoplay></video>
+
+</div>
+
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="main.js" async></script>
+
+<script src="ga.js"></script>
+</body>
 </html>

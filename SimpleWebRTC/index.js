@@ -1,10 +1,11 @@
-ip = 'corturntest.koreacentral.cloudapp.azure.com';
+ip = 'coturn.koreacentral.cloudapp.azure.com';
 let port = '1935';
 let ws = new WebSocket('wss://'+ip+':'+port+'/test');
-
+let userID = new Date().toJSON();
+let userType;
 ws.onopen = () => {
-	    console.log('open connection')
-		document.getElementById("message_text").textContent+=`Welcome to Chat Room\n\r`;
+	console.log('open connection')
+	document.getElementById("message_text").textContent+=`Welcome to Chat Room\n\r`;
 }
 
 
@@ -32,6 +33,29 @@ ws.onmessage = event => {
 						if(room == rece_data.args[0])
 						document.getElementById("message_text").textContent+=rece_data.args[1]+"\n\r";
 					}break;
+				case "ConnectRoom":
+					{
+					 	if(userID == rece_data.args[0])
+						{
+							userType = rece_data.args[1];
+							console.log(userType);							
+						}
+					}break;
+				case "RegistUserName":
+					{
+						if(userID == rece_data.args[0])
+						{
+							window.alert(rece_data.args[1]);
+						}
+					}break;
+				case "HostLeaved":
+					{
+						window.alert("Host is leaved!!");
+					}break;
+				case "ClientLeaved":
+					{
+						document.getElementById("message_text").textContent+=`${rece_data.args[0]} is leaved!!`+"\n\r";
+					}break;
 			}
 		}
 	}
@@ -50,5 +74,15 @@ function sendCommand(cmd,args) {
 
 
 function sendMessage() {
-		return [document.getElementById("userName").value,document.getElementById("userMessage").value,room]
+		return [document.getElementById("userName").value,document.getElementById("userMessage").value,room,userID]
 };
+function chatappear(){
+	var td = document.getElementById('text_div');
+
+	if(td.style.display ==="none"){
+		td.style.display="block";
+	}
+	else {
+		td.style.display="none";
+	}
+}

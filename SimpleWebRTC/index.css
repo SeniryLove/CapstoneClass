@@ -1,3 +1,8 @@
+html{
+	min-width:1440px;
+	min-height:810px;
+}
+
 #video_div{
 	position: absolute;
 	top:20%;
@@ -18,7 +23,8 @@
 
 .Localvideo{
 	position: absolute;
-	width:30%;
+	width:20%;
+	height:20%;
 	right:0%;
 	bottom:7.5%;
 }

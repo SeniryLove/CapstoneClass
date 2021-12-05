@@ -16,10 +16,11 @@ body{
 #video_div{
 	position: absolute;
 	top:15%;
-	bottom:0%;
+	bottom:2%;
 	left:0%;
 	right:15.25%;
 	width:83%;
+	height:83%:
 }
 
 #remotes{

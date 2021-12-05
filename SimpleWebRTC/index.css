@@ -6,6 +6,13 @@
 	right:15%;
 }
 
+#remotes{
+	position: absolute;
+	width:56%;
+	right:0%;
+	height:50%;
+}
+
 .Localvideo{
 	position: absolute;
 	height:100%;

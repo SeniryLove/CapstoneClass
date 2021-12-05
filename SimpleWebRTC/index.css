@@ -8,10 +8,9 @@
 
 .Localvideo{
 	position: absolute;
-	top:150px;
-	left:270px;
-	width: 480px;
-	height: 270px;
+	top:0%;
+	bottom:0%;
+	left:0%;
 }
 
 .Localvideo video {
@@ -22,11 +21,9 @@
 
 .Remotevideo{
 	transform: scaleX(-1);
-	position: absolute;
-	width: 480px;
-	top:150px;
-	left:720px;
-	height: 270px;
+	position: relative;
+	top:0%;
+	left:0%;
 }
 
 .Remotevideo video {

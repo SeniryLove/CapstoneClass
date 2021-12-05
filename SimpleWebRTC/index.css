@@ -1,13 +1,13 @@
 html{
 	min-width:1440px;
 	min-height:810px;
-	width:100vw;
-	height:100vh;
+	width:1440px;
+	height:810px;
 }
 
 body{
-	width:100%;
-	height:100%;
+	width:98%;
+	height:98%;
 	min-width:1440px;
 	min-height:810px;
 	margin:auto;
@@ -15,11 +15,11 @@ body{
 
 #video_div{
 	position: absolute;
-	top:20%;
+	top:15%;
 	bottom:0%;
 	left:0%;
 	right:15.25%;
-	width:84%;
+	width:83%;
 }
 
 #remotes{

@@ -18,7 +18,7 @@
 
 .Localvideo{
 	position: absolute;
-	height:auto;
+	height:14.0625%;
 	width:25%;
 	right:0%;
 	bottom:2.5%;
@@ -57,9 +57,9 @@
 	background-color: #12acef;
 }
 #setchatroom{
-	position:relative;
+	position:absolute;
 	bottom:2.5%;
-	right: 0%;
+	right: 14%;
 	border: none;
 	background-color: #4CAF50;
 	font-size: 20px;

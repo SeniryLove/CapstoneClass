@@ -28,10 +28,11 @@
 
 .Remotevideo{
 	transform: scaleX(-1);
-	position: relative;
+	position: fixed;
 	top:0%;
 	left:0%;
 	width: 50%;
+	height: auto;
 }
 
 .Remotevideo video {

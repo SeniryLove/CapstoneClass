@@ -1,9 +1,9 @@
 .Localvideo{
-	position: relative;
+	position: absolute;
 	top:150px;
-	left:700px;
-	width: 320px;
-	height: 180px;
+	left:270px;
+	width: 480px;
+	height: 270px;
 }
 
 .Localvideo video {
@@ -13,10 +13,11 @@
 }
 
 .Remotevideo{
-	position: relative;
+	transform: scaleX(-1);
+	position: absolute;
 	width: 480px;
-	bottom:120px;
-	left:320px;
+	top:150px;
+	left:720px;
 	height: 270px;
 }
 
@@ -36,7 +37,23 @@
 	bottom: 0px;
 	background-color: #12acef;
 }
+#setchatroom{
+	position:absolute;
+	top:650px;
+	left:1240px;
+	border: none;
+	background-color: #4CAF50;
+	font-size: 20px;
 
+	transition-duration: 0.4s;
+	background-color: white; 
+	color: black; 
+	border: 2px solid #4CAF50;
+}
+#setchatroom:hover{
+	background-color: #4CAF50; 
+	color: black; 
+}
 #message_text {
 	position: absolute;
 	overflow:auto;

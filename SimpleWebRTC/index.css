@@ -4,6 +4,7 @@
 	bottom:0%;
 	left:0%;
 	right:15%;
+	width:;
 }
 
 #remotes{
@@ -17,9 +18,10 @@
 
 .Localvideo{
 	position: absolute;
-	height:100%;
-	width:44%;
-	left:0%;
+	height:auto;
+	width:25%;
+	right:0%;
+	bottom:2.5%;
 }
 
 .Localvideo video {
@@ -55,13 +57,12 @@
 	background-color: #12acef;
 }
 #setchatroom{
-	position:absolute;
-	top:650px;
-	left:1240px;
+	position:relative;
+	bottom:2.5%;
+	right: 0%;
 	border: none;
 	background-color: #4CAF50;
 	font-size: 20px;
-
 	transition-duration: 0.4s;
 	background-color: white; 
 	color: black; 

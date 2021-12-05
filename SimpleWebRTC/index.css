@@ -11,6 +11,8 @@
 	width:56%;
 	right:0%;
 	height:100%;
+	display: table;
+	table-layout: fixed;
 }
 
 .Localvideo{
@@ -28,11 +30,12 @@
 
 .Remotevideo{
 	transform: scaleX(-1);
-	position: fixed;
+	position: relative;
 	top:0%;
 	left:0%;
 	width: 50%;
 	height: auto;
+	display: table-cell;
 }
 
 .Remotevideo video {

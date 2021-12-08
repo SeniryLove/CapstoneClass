@@ -148,6 +148,7 @@ wss.on('connection', ws => {
 							client.send(JSON.stringify({cmd: 'ClientLeaved', args: [userName.userName]}));
 						});
 					}
+					roomConfig[room].UserName.splice(roomConfig[room].UserName.findIndex((user)=> user.userID == userID),1);
 				}break;
 			}
 		}

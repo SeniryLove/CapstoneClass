@@ -113,7 +113,7 @@
                 $('body').addClass('active');
 		isConnectRoom = true;
 		room = name;
-		setTimeout(function(){sendCommand("ConnectRoom",[room,userID]);},1000);
+		setTimeout(function(){sendCommand("ConnectRoom",[room,userID]);sendCommand("saveconfig",sendMessage());},1000);
             }
 
             if (room) {

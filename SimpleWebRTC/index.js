@@ -6,7 +6,7 @@ let userType;
 ws.onopen = () => {
 	console.log('open connection')
 	document.getElementById("message_text").textContent+=`Welcome to Chat Room\n\r`;
-	sendCommand("saveconfig",sendMessage());
+	
 }
 
 

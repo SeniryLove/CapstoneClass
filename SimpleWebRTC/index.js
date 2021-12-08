@@ -6,6 +6,7 @@ let userType;
 ws.onopen = () => {
 	console.log('open connection')
 	document.getElementById("message_text").textContent+=`Welcome to Chat Room\n\r`;
+	sendCommand("saveconfig",sendMessage());
 }
 
 
@@ -74,7 +75,7 @@ function sendCommand(cmd,args) {
 
 
 function sendMessage() {
-		return [document.getElementById("userName").value,document.getElementById("userMessage").value,room,userID]
+		return [sessionStorage.getItem('user'),document.getElementById("userMessage").value,room,userID]
 };
 function chatappear(){
 	var td = document.getElementById('text_div');

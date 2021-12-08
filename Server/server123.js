@@ -100,12 +100,6 @@ wss.on('connection', ws => {
                         switch(client_data.cmd){					
 				case "saveconfig":{
 					let clients = wss.clients;
-					fs.writeFile('./test.txt', `${client_data.args[0]}：${client_data.args[1]}\n`, { flag: 'a+' }, err => {
-						if (err) {
-							console.error(err)
-							return
-						}
-					})
 					var isExist = saveRoomUserName(client_data.args[2],client_data.args[3],client_data.args[0]);
 					console.log(roomConfig);
 					clients.forEach(client => {

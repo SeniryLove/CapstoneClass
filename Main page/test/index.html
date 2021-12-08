@@ -11,10 +11,9 @@
 <link rel="stylesheet" href="Home.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+	<script type="text/javascript" src="Join.js"></script>
     <meta name="generator" content="Nicepage 4.0.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    
-    
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -25,6 +24,8 @@
     <meta property="og:type" content="website">
   </head>
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-overlap u-stick-footer">
+	
+  
     <section class="u-align-center u-clearfix u-uploaded-video u-video u-section-1" id="sec-f02a">
       <div class="u-background-video u-expanded" style="">
         <div class="embed-responsive">
@@ -45,7 +46,7 @@
               <input type="text" placeholder="Enter room ID" id="name-6797" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white u-input-1" required="">
             </div>
             <div class="u-align-left u-form-group u-form-submit">
-              <a href="#" class="u-border-none u-btn u-btn-submit u-button-style u-palette-1-base u-btn-1">Join<br>
+              <a href="#" class="u-border-none u-btn u-btn-submit u-button-style u-palette-1-base u-btn-1" onclick="JoinRoom()">Join<br>
               </a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
@@ -61,7 +62,7 @@
               <input type="text" placeholder="Enter your Name" id="name-3b9a" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
             </div>
             <div class="u-align-left u-form-group u-form-submit">
-              <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+              <a href="#" class="u-btn u-btn-submit u-button-style" onclick="EnterUserName()">Submit</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
             <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
@@ -85,5 +86,14 @@
         <span>Website Builder Software</span>
       </a>. 
     </section>
+	
+	
+	<script type="text/javascript">
+		if(sessionStorage.getItem("user") != null || sessionStorage.getItem("user") != '')
+		{
+			userName = sessionStorage.getItem("user");
+			document.getElementById('name-3b9a').value = sessionStorage.getItem("user");
+		}
+    </script>
   </body>
 </html>

@@ -36,10 +36,14 @@
 			</div>
 		<div>
 		
-		
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script src="../out/simplewebrtc-with-adapter.bundle.js"></script>
         <script>
+		if(sessionStorage.getItem('userID') == '' || sessionStorage.getItem('userID') == undefined)
+		{
+			window.location = 'https://coturn.koreacentral.cloudapp.azure.com';
+		}
+		
 		$(window).on("beforeunload", function() { 	    
 			sendCommand("LeaveRoom",[room,userID]);
 		})

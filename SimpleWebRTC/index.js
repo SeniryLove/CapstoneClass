@@ -60,6 +60,7 @@ ws.onmessage = event => {
 					}break;
 				case "HostLeaved":
 					{
+						userExist = true;
 						window.alert("Host is leaved!!");
 						window.location = 'https://coturn.koreacentral.cloudapp.azure.com/';
 					}break;

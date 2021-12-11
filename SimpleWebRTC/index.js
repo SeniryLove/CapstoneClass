@@ -10,7 +10,7 @@ ws.onopen = () => {
 		cmd:'ConnectRoom',
 		args:[sessionStorage.getItem('room'),sessionStorage.getItem('userID'),sessionStorage.getItem('user')]
 	}
-	ws.send(JSON.stingify(config));
+	ws.send(JSON.stringify(config));
 }
 
 

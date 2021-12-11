@@ -92,9 +92,8 @@ wss.on('connection', ws => {
 						})
 						if(isExist)
 						{
-							var usertype = addRoomUser(room,userID,userName);
+							var usertype = '';
 							ws.send(JSON.stringify({cmd: 'ConnectRoom',value: false,args:[userID,usertype]}));
-
 							console.log(roomConfig);
 						}
 						else
@@ -115,15 +114,21 @@ wss.on('connection', ws => {
 					var hostleaved = removeRoomUser(room,userID);
 					if(hostleaved)
 					{
-						clients.forEach(client => {
-							client.send(JSON.stringify({cmd: 'HostLeaved'}));
-						});
+						if(client_data.args[2])
+						{
+							clients.forEach(client => {
+								client.send(JSON.stringify({cmd: 'HostLeaved'}));
+							});
+						}
 					}
 					else
 					{
-						clients.forEach(client => {
-							client.send(JSON.stringify({cmd: 'ClientLeaved', args: [userName.userName]}));
-						});
+						if(client_data.args[2])
+						{
+							clients.forEach(client => {
+								client.send(JSON.stringify({cmd: 'ClientLeaved', args: [userName.userName]}));
+							});
+						}
 					}
 					roomConfig[room].User.splice(roomConfig[room].User.findIndex((user)=> user.userID == userID),1);
 				}break;

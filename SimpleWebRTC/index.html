@@ -53,7 +53,7 @@
 		
 		$(window).on("beforeunload", function() {
 			if(!userExist)
-			sendCommand("LeaveRoom",[room,sessionStorage.getItem('userID')]);
+			sendCommand("LeaveRoom",[room,sessionStorage.getItem('userID'),userExist]);
 		})
             // grab the room from the URL
             var room = location.search && location.search.split('?')[1];

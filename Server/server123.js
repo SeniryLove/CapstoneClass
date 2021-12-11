@@ -85,7 +85,7 @@ wss.on('connection', ws => {
 						var isExist = false;
 						initRoomConfig(room);
 						roomConfig[room].User.forEach(user => {
-							if(user.userName == userName)
+							if(user.userName == userName || user.userID == userID)
 							{
 								isExist = true;
 							}

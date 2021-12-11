@@ -114,7 +114,7 @@ wss.on('connection', ws => {
 					var hostleaved = removeRoomUser(room,userID);
 					if(hostleaved)
 					{
-						if(client_data.args[2])
+						if(!client_data.args[2])
 						{
 							clients.forEach(client => {
 								client.send(JSON.stringify({cmd: 'HostLeaved'}));
@@ -123,7 +123,7 @@ wss.on('connection', ws => {
 					}
 					else
 					{
-						if(client_data.args[2])
+						if(!client_data.args[2])
 						{
 							clients.forEach(client => {
 								client.send(JSON.stringify({cmd: 'ClientLeaved', args: [userName.userName]}));

@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="index.css">
 	<script src='./index.js'></script>
     </head>
-    <body background="https://truth.bahamut.com.tw/s01/201810/790a9031ec36a98af10b58ef26c5cf72.JPG">
+    <body>
 		<a href="https://coturn.koreacentral.cloudapp.azure.com/"><img src="https://truth.bahamut.com.tw/s01/201609/20fcfcfda56c437b521d25d0970447eb.PNG" width="200" height="100"></a>
 		<div id='text_div'>
 			<form id="message_form" onsubmit='sendCommand("SendMessage",sendMessage());return false'>
@@ -16,7 +16,7 @@
 			</form>
 		</div>
 		<h1 id="title">Start a room</h1>
-		<button id="screenShareButton"></button>
+		
 		
 		<p id="subTitle"></p>
 		
@@ -30,6 +30,7 @@
 			<div id="remotes">
 				
 			</div>
+			<button id="screenShareButton"></button>
 			<button id="setchatroom"type="button" onclick="chatappear()">chat</button>
 			<div class="Localvideo">
 				<video id="localVideo" oncontextmenu="return false;"></video>

@@ -3,6 +3,7 @@ let port = '1935';
 let ws = new WebSocket('wss://'+ip+':'+port+'/test');
 let userID = new Date().toJSON();
 let userType;
+var userExist = false;
 ws.onopen = () => {
 	console.log('open connection')
 	document.getElementById("message_text").textContent+=`Welcome to Chat Room\n\r`;
@@ -50,6 +51,7 @@ ws.onmessage = event => {
 						}
 						else
 						{
+							userExist = true;
 							window.alert("The username is exist!!\nPlease edit the username or join other room");
 							window.location = 'https://coturn.koreacentral.cloudapp.azure.com/';
 						}

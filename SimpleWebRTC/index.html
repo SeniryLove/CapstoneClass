@@ -50,7 +50,8 @@
 			userID = sessionStorage.getItem('userID')
 		}
 		
-		$(window).on("beforeunload", function() { 	    
+		$(window).on("beforeunload", function() {
+			if(!userExist)
 			sendCommand("LeaveRoom",[room,userID]);
 		})
             // grab the room from the URL

@@ -131,7 +131,9 @@ body{
 	width: 90%;
 	bottom: 10%;
 }
-
+#screenShareButton{
+z-index:5;
+}
 #userMessage {
 	position: absolute;
 	left: 5%;

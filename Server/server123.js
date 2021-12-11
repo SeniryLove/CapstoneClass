@@ -101,7 +101,7 @@ wss.on('connection', ws => {
 							var usertype = addRoomUser(room,userID,userName);
 							ws.send(JSON.stringify({cmd: 'ConnectRoom',value: true,args:[userID,usertype]}));
 							
-							console.log(roomConfig);
+							console.log(roomConfig.User);
 						}
 					}
 				}break;

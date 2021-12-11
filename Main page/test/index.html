@@ -104,11 +104,8 @@
 		}
 		else
 		{
-			if(sessionStorage.getItem('user'))
-			sessionStorage.removeItem('user');
-			if(sessionStorage.getItem('room'))
-			sessionStorage.removeItem('room');
 			sessionStorage.setItem('userID',new Date().toISOString());
+			console.log("userID unset");
 		}
     </script>
   </body>

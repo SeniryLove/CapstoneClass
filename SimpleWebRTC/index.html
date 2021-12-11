@@ -45,6 +45,10 @@
 		{
 			window.location = 'https://coturn.koreacentral.cloudapp.azure.com/';
 		}
+		else
+		{
+			userID = sessionStorage.getItem('userID')
+		}
 		
 		$(window).on("beforeunload", function() { 	    
 			sendCommand("LeaveRoom",[room,userID]);

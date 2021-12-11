@@ -44,6 +44,7 @@
 		   (sessionStorage.getItem('room') == '' || sessionStorage.getItem('room') == undefined))
 		{
 			window.location = 'https://coturn.koreacentral.cloudapp.azure.com/';
+			sessionStorage.removeItem('userID');
 		}
 		else
 		{

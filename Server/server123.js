@@ -93,18 +93,15 @@ wss.on('connection', ws => {
 						if(isExist)
 						{
 							var usertype = addRoomUser(room,userID,userName);
-							clients.forEach(client => {
-								client.send(JSON.stringify({cmd: 'ConnectRoom',value: false,args:[userID,usertype]}));
-							});
+							ws.send(JSON.stringify({cmd: 'ConnectRoom',value: false,args:[userID,usertype]}));
 
 							console.log(roomConfig);
 						}
 						else
 						{
 							var usertype = addRoomUser(room,userID,userName);
-							clients.forEach(client => {
-								client.send(JSON.stringify({cmd: 'ConnectRoom',value: true,args:[userID,usertype]}));
-							});
+							ws.send(JSON.stringify({cmd: 'ConnectRoom',value: true,args:[userID,usertype]}));
+							
 							console.log(roomConfig);
 						}
 					}

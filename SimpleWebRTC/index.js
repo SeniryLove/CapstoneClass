@@ -52,6 +52,7 @@ ws.onmessage = event => {
 						else
 						{
 							userExist = true;
+							sessionStorage.removeItem('userID');
 							window.alert("The username is exist!!\nPlease edit the username or join other room");
 							window.location = 'https://coturn.koreacentral.cloudapp.azure.com/';
 						}

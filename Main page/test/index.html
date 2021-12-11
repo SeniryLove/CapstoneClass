@@ -89,7 +89,7 @@
 	
 	
 	<script type="text/javascript">
-		if(sessionStorage.getItem('userID') != null || sessionStorage.getItem('userID') != '' || sessionStorage.getItem('userID') != undefined)
+		if(sessionStorage.getItem('userID') != null || sessionStorage.getItem('userID') != '')
 		{
 			if(sessionStorage.getItem("user") != null || sessionStorage.getItem("user") != '')
 			{
@@ -104,7 +104,9 @@
 		}
 		else
 		{
+			if(sessionStorage.getItem('user'))
 			sessionStorage.removeItem('user');
+			if(sessionStorage.getItem('room'))
 			sessionStorage.removeItem('room');
 			sessionStorage.setItem('userID',new Date().toISOString());
 		}

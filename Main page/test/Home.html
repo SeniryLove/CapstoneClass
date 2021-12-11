@@ -88,15 +88,14 @@
     </section>
 	
 	<script type="text/javascript">
-		console.log(sessionStorage.getItem('userID'));
-		if(sessionStorage.getItem('userID') != null || sessionStorage.getItem('userID') != '')
+		if(sessionStorage.getItem('userID') != null && sessionStorage.getItem('userID') != '')
 		{
-			if(sessionStorage.getItem("user") != null || sessionStorage.getItem("user") != '')
+			if(sessionStorage.getItem("user") != null && sessionStorage.getItem("user") != '')
 			{
 				userName = sessionStorage.getItem("user");
 				document.getElementById('name-3b9a').value = sessionStorage.getItem("user");
 			}
-			if(sessionStorage.getItem("room") != null || sessionStorage.getItem("room") != '')
+			if(sessionStorage.getItem("room") != null && sessionStorage.getItem("room") != '')
 			{
 				room = sessionStorage.getItem('room');
 				document.getElementById('name-6797').value = sessionStorage.getItem("room");

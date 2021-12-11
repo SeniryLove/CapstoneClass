@@ -61,6 +61,7 @@ ws.onmessage = event => {
 				case "HostLeaved":
 					{
 						window.alert("Host is leaved!!");
+						window.location = 'https://coturn.koreacentral.cloudapp.azure.com/';
 					}break;
 				case "ClientLeaved":
 					{

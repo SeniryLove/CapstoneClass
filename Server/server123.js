@@ -119,8 +119,8 @@ wss.on('connection', ws => {
 							clients.forEach(client => {
 								client.send(JSON.stringify({cmd: 'HostLeaved'}));
 							});
+							delete roomConfig[room]
 						}
-						delete roomConfig[room]
 					}
 					else
 					{
@@ -129,8 +129,8 @@ wss.on('connection', ws => {
 							clients.forEach(client => {
 								client.send(JSON.stringify({cmd: 'ClientLeaved', args: [userName.userName]}));
 							});
+							roomConfig[room].User.splice(roomConfig[room].User.findIndex((user)=> user.userID == userID),1);
 						}
-						roomConfig[room].User.splice(roomConfig[room].User.findIndex((user)=> user.userID == userID),1);
 					}
 					
 				}break;

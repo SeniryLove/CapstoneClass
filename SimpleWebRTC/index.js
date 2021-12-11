@@ -6,7 +6,11 @@ let userType;
 ws.onopen = () => {
 	console.log('open connection')
 	document.getElementById("message_text").textContent+=`Welcome to Chat Room\n\r`;
-	
+	var config = {
+		cmd:'ConnectRoom',
+		args:[sessionStorage.getItem('room'),sessionStorage.getItem('userID'),sessionStorage.getItem('user')]
+	}
+	ws.send(config);
 }
 
 
@@ -36,17 +40,18 @@ ws.onmessage = event => {
 					}break;
 				case "ConnectRoom":
 					{
-					 	if(userID == rece_data.args[0])
+						if(rece_data.value)
 						{
-							userType = rece_data.args[1];
-							console.log(userType);							
+							if(userID == rece_data.args[0])
+							{
+								userType = rece_data.args[1];
+								console.log(userType);							
+							}
 						}
-					}break;
-				case "RegistUserName":
-					{
-						if(userID == rece_data.args[0])
+						else
 						{
-							window.alert(rece_data.args[1]);
+							window.alert("The username is exist!!\nPlease edit the username or join other room");
+							window.location = 'https://coturn.koreacentral.cloudapp.azure.com/';
 						}
 					}break;
 				case "HostLeaved":

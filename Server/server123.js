@@ -19,18 +19,16 @@ function initRoomConfig(room){
 		roomConfig[room] = {};
 		roomConfig[room].userCount = 0;
 		roomConfig[room].User = [];
-		roomConfig[room].UserName = [];
 		roomConfig[room].Host = "";
 		roomConfig[room].Client = [];
 	}
 }
 
-function addRoomUser(room,user)
+function addRoomUser(room,user,userName)
 {
 	roomConfig[room].userCount = roomConfig[room].userCount + 1;
-	roomConfig[room].User.push(user);
-	var conf = {userID:`${user}`, userName:""};
-	roomConfig[room].UserName.push(conf); 
+	var conf = {userID:`${user}`, userName:userName};
+	roomConfig[room].User.push(conf);
 	if(roomConfig[room].userCount == 1)
 	{
 		roomConfig[room].Host = user;
@@ -43,38 +41,10 @@ function addRoomUser(room,user)
 	}
 }
 
-
-function saveRoomUserName(room,userID,userName)
-{
-	if(roomConfig[room].UserName.length)
-	{	
-		for(var i=0;i<roomConfig[room].UserName.length;i++)
-		{
-			if(roomConfig[room].UserName[i].userID != userID && roomConfig[room].UserName[i].userName == userName)
-			{
-				console.log(roomConfig[room].UserName[i]);
-				return true;
-			}
-		}
-		for(var i=0;i<roomConfig[room].UserName.length;i++)
-		{
-			if(roomConfig[room].UserName[i].userID == userID)
-			{
-				roomConfig[room].UserName[i].userName = userName;
-				return false;
-			}
-		}
-	}
-
-	roomConfig[room].UserName.push({ userID:`${userID}`,userName: `${userName}`});
-	return false;
-}
-
 function removeRoomUser(room,user)
 {
 	roomConfig[room].userCount=roomConfig[room].userCount - 1;
-	roomConfig[room].User.splice(roomConfig[room].User.findIndex((userID)=>userID==user),1);
-	roomConfig[room].UserName.splice(roomConfig[room].UserName.findIndex((userName)=>userName.userID==user),1);
+	roomConfig[room].User.splice(roomConfig[room].User.findIndex((userName)=>userName.userID==user),1);
 	if(user == roomConfig[room].Host)
 	{
 		return true;
@@ -91,48 +61,59 @@ function removeRoomUser(room,user)
 }
 
 wss.on('connection', ws => {
-        console.log('Client connected')
-
-        ws.on('message', message => {
-                var client_data = JSON.parse(message);
-                if(client_data != undefined) {
-                        console.log(client_data);
-                        switch(client_data.cmd){					
-				case "saveconfig":{
+	console.log('Client connected')
+	ws.on('message', message => {
+	var client_data = JSON.parse(message);
+		if(client_data != undefined) {
+			console.log(client_data);
+			switch(client_data.cmd)
+			{
+				case "SendMessage":{
 					let clients = wss.clients;
-					var isExist = saveRoomUserName(client_data.args[2],client_data.args[3],client_data.args[0]);
-					console.log(roomConfig);
 					clients.forEach(client => {
-						if(!isExist)
-							client.send(JSON.stringify({cmd: "receiveMessage", args:[client_data.args[2],`${client_data.args[0]}：${client_data.args[1]}`]}));
-						else
-						{
-							console.log(roomConfig[room]);
-							client.send(JSON.stringify({cmd: "RegistUserName",args: [client_data.args[3],`UserName ${client_data.args[0]} is exist!!`]}));
-						}
+						client.send(JSON.stringify({cmd: "receiveMessage", args:[client_data.args[2],`${client_data.args[0]}：${client_data.args[1]}`]}));
 					});
 				}break;
+				
 				case "ConnectRoom":{
 					let clients = wss.clients;
 					var room = client_data.args[0];
 					var userID = client_data.args[1];
+					var userName = client_data.args[2];
 					if(room != '')
 					{
+						var isExist = false;
 						initRoomConfig(room);
-						var usertype = addRoomUser(room,userID);
-						clients.forEach(client => {
-							client.send(JSON.stringify({cmd: 'ConnectRoom',args:[userID,usertype]}));
-						});
+						roomConfig[room].User.forEach(user => {
+							if(user.userName == userName)
+							{
+								isExist = true;
+							}
+						})
+						if(isExist)
+						{
+							var usertype = addRoomUser(room,userID,userName);
+							clients.forEach(client => {
+								client.send(JSON.stringify({cmd: 'ConnectRoom',value: false,args:[userID,usertype]}));
+							});
 
-						console.log(roomConfig);
+							console.log(roomConfig);
+						}
+						else
+						{
+							var usertype = addRoomUser(room,userID,userName);
+							clients.forEach(client => {
+								client.send(JSON.stringify({cmd: 'ConnectRoom',value: true,args:[userID,usertype]}));
+							});
+							console.log(roomConfig);
+						}
 					}
-						
 				}break;
 				case "LeaveRoom":{
 					var clients = wss.clients;
 					var room = client_data.args[0];
 					var userID = client_data.args[1];
-					var userName = roomConfig[room].UserName.find((user)=> user.userID == userID);
+					var userName = roomConfig[room].User.find((user)=> user.userID == userID);
 					console.log(userName);
 					var hostleaved = removeRoomUser(room,userID);
 					if(hostleaved)
@@ -143,12 +124,11 @@ wss.on('connection', ws => {
 					}
 					else
 					{
-						if(userName.userName != "")
 						clients.forEach(client => {
 							client.send(JSON.stringify({cmd: 'ClientLeaved', args: [userName.userName]}));
 						});
 					}
-					roomConfig[room].UserName.splice(roomConfig[room].UserName.findIndex((user)=> user.userID == userID),1);
+					roomConfig[room].User.splice(roomConfig[room].User.findIndex((user)=> user.userID == userID),1);
 				}break;
 			}
 		}

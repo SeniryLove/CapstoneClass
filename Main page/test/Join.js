@@ -32,6 +32,7 @@ function JoinRoom(){
 		}
 		else
 		{
+			sessionStorage.setItem('room',room);
 			window.location = 'https://coturn.koreacentral.cloudapp.azure.com/test?' + room;
 		}
 		

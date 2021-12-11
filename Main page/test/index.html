@@ -89,10 +89,18 @@
 	
 	
 	<script type="text/javascript">
-		if(sessionStorage.getItem("user") != null || sessionStorage.getItem("user") != '')
+		if(sessionStorage.getItem('userID') != null || sessionStorage.getItem('userID') != '' || sessionStorage.getItem('userID') != undefined)
 		{
-			userName = sessionStorage.getItem("user");
-			document.getElementById('name-3b9a').value = sessionStorage.getItem("user");
+			if(sessionStorage.getItem("user") != null || sessionStorage.getItem("user") != '')
+			{
+				userName = sessionStorage.getItem("user");
+				document.getElementById('name-3b9a').value = sessionStorage.getItem("user");
+			}
+		}
+		else
+		{
+			sessionStorage.removeItem('user');
+			sessionStorage.setItem('userID',new Date().toISOString());
 		}
     </script>
   </body>

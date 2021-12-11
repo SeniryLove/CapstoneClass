@@ -41,7 +41,8 @@
         <script>
 		if(sessionStorage.getItem('userID') == '' || sessionStorage.getItem('userID') == undefined)
 		{
-			window.location = 'https://localhost';
+			console.log("Failed to read userID");
+			window.location = 'https://coturn.koreacentral.cloudapp.azure.com/';
 		}
 		
 		$(window).on("beforeunload", function() { 	    
